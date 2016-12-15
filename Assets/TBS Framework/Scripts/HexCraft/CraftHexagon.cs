@@ -2,6 +2,11 @@
 
 class CraftHexagon : Hexagon
 {
+	/// <summary>
+	/// Indicates landform of the cell.
+	/// </summary>
+	public ELandForm LandForm;
+
     public void Start()
     {
         SetColor(Color.white);
@@ -70,4 +75,12 @@ class CraftHexagon : Hexagon
 
     
 }
+
+public enum ELandForm
+{
+	land,
+	sea,
+	small_city,
+	big_city
+};
 

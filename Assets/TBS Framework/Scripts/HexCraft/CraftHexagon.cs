@@ -5,7 +5,7 @@ class CraftHexagon : Hexagon
     public void Start()
     {
         SetColor(Color.white);
-        SetOutlineColor(Color.black);
+		SetOutlineColor(Color.black);
     }
 
     public override Vector3 GetCellDimensions()
@@ -45,7 +45,7 @@ class CraftHexagon : Hexagon
     public override void UnMark()
     {
         SetColor(Color.white);
-        SetOutlineColor(Color.black);
+		SetOutlineColor(Color.black);
     }
 
     private void SetColor(Color color)

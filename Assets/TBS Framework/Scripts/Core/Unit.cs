@@ -48,6 +48,7 @@ public abstract class Unit : MonoBehaviour
     public int AttackRange;
     public int AttackFactor;
     public int DefenceFactor;
+	public int Supply;
     /// <summary>
     /// Determines how far on the grid the unit can move.
     /// </summary>
@@ -177,7 +178,13 @@ public abstract class Unit : MonoBehaviour
 
         MarkAsAttacking(other);
         ActionPoints--;
-        other.Defend(this, AttackFactor);
+
+		// Supply influence the attack factor
+		// Have to keep supply superieur than 0
+		if (Supply >= 0)
+			other.Defend (this, AttackFactor);
+		else
+			other.Defend (this, Mathf.FloorToInt(AttackFactor/2));
 
         if (ActionPoints == 0)
         {

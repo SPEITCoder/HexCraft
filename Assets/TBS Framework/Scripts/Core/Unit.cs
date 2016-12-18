@@ -178,6 +178,7 @@ public abstract class Unit : MonoBehaviour
 
         MarkAsAttacking(other);
         ActionPoints--;
+		Supply--;
 
 		// Supply influence the attack factor
 		// Have to keep supply superieur than 0

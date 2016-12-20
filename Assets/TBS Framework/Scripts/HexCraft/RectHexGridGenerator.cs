@@ -59,6 +59,12 @@ class RectHexGridGenerator : ICellGridGenerator
 				smallCity.transform.position = cell.position;
 				smallCity.transform.parent = cell;
 			}
+			else if(cell.GetComponent<CraftHexagon>().LandForm == ELandForm.big_city)
+			{
+				GameObject bigCity = Instantiate(BigCityPrefab);
+				bigCity.transform.position = cell.position;
+				bigCity.transform.parent = cell;
+			}
 		}
 	}
 }

@@ -10,6 +10,7 @@ class RectHexGridGenerator : ICellGridGenerator
     public GameObject HexagonPrefab;
 	public GameObject SmallCityPrefab;
 	public GameObject BigCityPrefab;
+	public Transform CityParent;
     public int Height;
     public int Width;
 
@@ -63,7 +64,7 @@ class RectHexGridGenerator : ICellGridGenerator
 			{
 				GameObject bigCity = Instantiate(BigCityPrefab);
 				bigCity.transform.position = cell.position;
-				bigCity.transform.parent = cell;
+				bigCity.transform.parent = CityParent;
 			}
 		}
 	}

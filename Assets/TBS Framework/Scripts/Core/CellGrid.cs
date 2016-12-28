@@ -102,11 +102,16 @@ public class CellGrid : MonoBehaviour
     {
         CellGridState.OnCellClicked(sender as Cell);
     }
-
+		
     private void OnUnitClicked(object sender, EventArgs e)
     {
         CellGridState.OnUnitClicked(sender as Unit);
     }
+
+	private void OnUnitCreated(object sender, UnitCreateEventArgs e)
+	{
+
+	}
     private void OnUnitDestroyed(object sender, AttackEventArgs e)
     {
         Units.Remove(sender as Unit);

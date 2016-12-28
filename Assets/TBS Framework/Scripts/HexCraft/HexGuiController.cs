@@ -7,12 +7,16 @@ public class HexGuiController : MonoBehaviour
     public CellGrid CellGrid;
     public GameObject UnitsParent;
 	public GameObject CityParent;
-    public Button NextTurnButton;
 
+    public Button NextTurnButton;
     public Image UnitImage;
     public Text InfoText;
     public Text StatsText;
 	public Text CityInfo;
+
+	public Button CreateFootmanButton;
+
+	private Cell _selectedCell;
 
     void Start()
     {
@@ -21,6 +25,8 @@ public class HexGuiController : MonoBehaviour
         CellGrid.GameStarted += OnGameStarted;
         CellGrid.TurnEnded += OnTurnEnded;   
         CellGrid.GameEnded += OnGameEnded;
+
+		CreateFootmanButton.onClick.AddListener(delegate {OnCreateFootMan(this,new EventArgs());} );
     }
 
     private void OnGameStarted(object sender, EventArgs e)
@@ -41,6 +47,7 @@ public class HexGuiController : MonoBehaviour
 		foreach (Transform city in CityParent.transform) 
 		{
 			city.GetComponent<ICity>().UnitClicked += OnCityClicked;
+			city.GetComponent<ICity>().UnitDeselected += OnCityDeselected;
 		}
 
         OnTurnEnded(sender,e);
@@ -92,6 +99,27 @@ public class HexGuiController : MonoBehaviour
 	{
 		var city = sender as ICity;
 		CityInfo.text = "Clicked a city." + "\nHit Points: " + city.HitPoints + "/" + city.TotalHitPoints;
+	}
+	//revive a OnCreatingUnit event from city 
+	private void OnCreateUnitfromCity(object sender, UnitCreateEventArgs e)
+	{
+		//var city = sender as ICity;
+		//_selectedCell = e.Cell;
+		CreateFootmanButton.interactable = true;
+	}
+	private void OnCityDeselected(object sender, EventArgs e)
+	{
+		CreateFootmanButton.interactable = false;
+	}
+
+	//when player push FootMan button on UI
+	private void OnCreateFootMan(object sender, EventArgs e)
+	{
+		foreach (Transform city in CityParent.transform) 
+		{
+			//city.GetComponent<ICity>()._unitType = ;
+			CityInfo.text = "Change type to footman...";
+		}
 	}
 
     public void RestartLevel()

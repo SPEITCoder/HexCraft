@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ICity : Unit {
+public abstract class ICity : Unit {
 
 	public Color PlayerColor;
 
 	public string CityName;
 
 	private Transform Highlighter;
+
+	public Unit _unitType;
 
 	public override void Initialize()
 	{
@@ -46,7 +48,11 @@ public class ICity : Unit {
 		StartCoroutine(Glow(new Color(1, 0.5f, 0.5f), 1));
 	}
 	public override void MarkAsDestroyed()
+	{	}
+
+	public virtual void UnitCreating(Cell cell)
 	{
+
 	}
 
 	private IEnumerator Jerk(Unit other)

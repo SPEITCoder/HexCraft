@@ -54,6 +54,22 @@ class CellGridStateUnitSelected : CellGridState
         }
             
     }
+	public override void OnCityClicked(ICity city)
+	{
+//		if (unit.Equals(_unit) || unit.isMoving)
+//			return;
+
+		if (_unitsInRange.Contains(city) && _unit.ActionPoints > 0)
+		{
+			_unit.DealDamage(city);
+			_cellGrid.CellGridState = new CellGridStateUnitSelected(_cellGrid, _unit);
+		}
+
+		if (city.PlayerNumber.Equals(_unit.PlayerNumber))
+		{
+			_cellGrid.CellGridState = new CellGridStateCitySelected(_cellGrid, city);
+		}
+	}
     public override void OnCellDeselected(Cell cell)
     {
         base.OnCellDeselected(cell);

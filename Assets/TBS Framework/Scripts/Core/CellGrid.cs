@@ -42,6 +42,7 @@ public class CellGrid : MonoBehaviour
     public List<Player> Players { get; private set; }
     public List<Cell> Cells { get; private set; }
     public List<Unit> Units { get; private set; }
+	public List<ICity> Citys { get; private set; }
 
     void Start()
     {
@@ -65,6 +66,18 @@ public class CellGrid : MonoBehaviour
                 Cells.Add(cell);
             else
                 Debug.LogError("Invalid object in cells paretn game object");
+
+//			if (cell.gameObject.GetComponent<CraftHexagon>() == null)
+//				Debug.LogError("No CreatHexagon for cell");
+//			if (cell.gameObject.GetComponent<CraftHexagon>().LandForm == ELandForm.big_city
+//				|| cell.gameObject.GetComponent<CraftHexagon>().LandForm == ELandForm.small_city)
+//			{
+//				ICity city = cell.gameObject.GetComponent<CraftHexagon>().city;
+//				if (city != null)
+//					Citys.Add(city);
+//				else
+//					Debug.LogError("Invalid object in citys");
+//			}
         }
       
         foreach (var cell in Cells)
@@ -73,6 +86,16 @@ public class CellGrid : MonoBehaviour
             cell.CellHighlighted += OnCellHighlighted;
             cell.CellDehighlighted += OnCellDehighlighted;
         }
+
+		var gridGenerator = GetComponent<RectHexGridGenerator>();
+		if (gridGenerator != null)
+			Citys = gridGenerator.GenerateLandform ();
+		else
+			Debug.LogError("No LandForm Generator");
+		foreach (var city in Citys)
+		{
+			city.UnitClicked += OnCityClicked;
+		}
              
         var unitGenerator = GetComponent<IUnitGenerator>();
         if (unitGenerator != null)
@@ -107,6 +130,11 @@ public class CellGrid : MonoBehaviour
     {
         CellGridState.OnUnitClicked(sender as Unit);
     }
+
+	private void OnCityClicked(object sender, EventArgs e)
+	{
+		CellGridState.OnCityClicked(sender as ICity);
+	}
 
 	private void OnUnitCreated(object sender, UnitCreateEventArgs e)
 	{

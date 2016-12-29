@@ -44,9 +44,9 @@ class RectHexGridGenerator : ICellGridGenerator
         return hexagons;
     }
 
-	public void GenerateLandform()
+	public List<ICity> GenerateLandform()
 	{
-
+		List<ICity> Citys = new List<ICity>();
 		if (HexagonPrefab.GetComponent<Hexagon>() == null)
 		{
 			Debug.LogError("Invalid hexagon prefab provided");
@@ -58,15 +58,30 @@ class RectHexGridGenerator : ICellGridGenerator
 			{
 				GameObject smallCity = Instantiate(SmallCityPrefab);
 				smallCity.transform.position = cell.position;
-				smallCity.transform.parent = cell;
+				smallCity.transform.parent = CityParent;
+
+				smallCity.GetComponent<ICity>().Initialize();
+				smallCity.GetComponent<ICity>().Cell = cell.GetComponent<Cell>();
+					
+				//cell.gameObject.GetComponent<CraftHexagon>().city = smallCity.GetComponent<ICity>();
+				Citys.Add(smallCity.GetComponent<ICity>());
 			}
 			else if(cell.GetComponent<CraftHexagon>().LandForm == ELandForm.big_city)
 			{
 				GameObject bigCity = Instantiate(BigCityPrefab);
+				//cell.gameObject.GetComponent<CraftHexagon>().city = bigCity.GetComponent<ICity>();
+				Citys.Add(bigCity.GetComponent<ICity>());
 				bigCity.transform.position = cell.position;
 				bigCity.transform.parent = CityParent;
+
+				bigCity.GetComponent<ICity>().Initialize();
+				bigCity.GetComponent<ICity>().Cell = cell.GetComponent<Cell>();
+				//cell.gameObject.GetComponent<CraftHexagon>().city = bigCity.GetComponent<ICity>();
+				Citys.Add(bigCity.GetComponent<ICity>());
 			}
 		}
+
+		return Citys;
 	}
 }
 

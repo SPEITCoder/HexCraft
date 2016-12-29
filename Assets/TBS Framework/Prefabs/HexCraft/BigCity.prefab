@@ -379,9 +379,10 @@ MonoBehaviour:
   AttackFactor: 0
   DefenceFactor: 0
   Supply: 0
-  MovementPoints: 0
+  MovementPoints: 2
   MovementSpeed: 0
-  ActionPoints: 0
+  ActionPoints: 1
   PlayerNumber: 0
   PlayerColor: {r: 0, g: 0, b: 0, a: 0}
   CityName: 
+  _unitType: {fileID: 0}

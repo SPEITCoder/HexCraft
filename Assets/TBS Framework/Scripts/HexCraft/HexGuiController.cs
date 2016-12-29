@@ -47,6 +47,8 @@ public class HexGuiController : MonoBehaviour
 		foreach (Transform city in CityParent.transform) 
 		{
 			city.GetComponent<ICity>().UnitClicked += OnCityClicked;
+			city.GetComponent<ICity>().UnitSelected += OnCitySelected;
+			city.GetComponent<ICity> ().BigCitySelected += OnBigCitySelected;
 			city.GetComponent<ICity>().UnitDeselected += OnCityDeselected;
 		}
 
@@ -101,10 +103,14 @@ public class HexGuiController : MonoBehaviour
 		CityInfo.text = "Clicked a city." + "\nHit Points: " + city.HitPoints + "/" + city.TotalHitPoints;
 	}
 	//revive a OnCreatingUnit event from city 
-	private void OnCreateUnitfromCity(object sender, UnitCreateEventArgs e)
+	private void OnCitySelected(object sender, EventArgs e)
 	{
 		//var city = sender as ICity;
 		//_selectedCell = e.Cell;
+		//CreateFootmanButton.interactable = true;
+	}
+	private void OnBigCitySelected(object sender, EventArgs e)
+	{
 		CreateFootmanButton.interactable = true;
 	}
 	private void OnCityDeselected(object sender, EventArgs e)

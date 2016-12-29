@@ -6,6 +6,7 @@ class CraftHexagon : Hexagon
 	/// Indicates landform of the cell.
 	/// </summary>
 	public ELandForm LandForm;
+	public ICity city{get;set;}
 
     public void Start()
     {

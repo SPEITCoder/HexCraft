@@ -45,26 +45,43 @@ public class CellGridStateCitySelected : CellGridState {
 	{
 //		if (unit.Equals(_unit) || unit.isMoving)
 //			return;
-//
+
 //		if (_unitsInRange.Contains(unit) && _unit.ActionPoints > 0)
 //		{
 //			_unit.DealDamage(unit);
 //			_cellGrid.CellGridState = new CellGridStateUnitSelected(_cellGrid, _unit);
 //		}
-//
-//		if (unit.PlayerNumber.Equals(_unit.PlayerNumber))
+
+		if (unit.PlayerNumber.Equals(_city.PlayerNumber))
+		{
+			_cellGrid.CellGridState = new CellGridStateUnitSelected(_cellGrid, unit);
+		}
+
+	}
+	public override void OnCityClicked(ICity city)
+	{
+		if (city.Equals(_city))
+				return;
+
+//		if (_unitsInRange.Contains(city) && _unit.ActionPoints > 0)
 //		{
-//			_cellGrid.CellGridState = new CellGridStateUnitSelected(_cellGrid, unit);
+//			_unit.DealDamage(city);
+//			_cellGrid.CellGridState = new CellGridStateUnitSelected(_cellGrid, _unit);
 //		}
+
+		if (city.PlayerNumber.Equals(_city.PlayerNumber))
+		{
+			_cellGrid.CellGridState = new CellGridStateCitySelected(_cellGrid, city);
+		}
 	}
 	public override void OnCellDeselected(Cell cell)
 	{
 		base.OnCellDeselected(cell);
 		cell.MarkAsReachable();
-//		foreach (var _cell in _cellGrid.Cells.Except(_pathsInRange))
-//		{
-//			_cell.UnMark();
-//		}
+		foreach (var _cell in _cellGrid.Cells.Except(_pathsInRange))
+		{
+			_cell.UnMark();
+		}
 	}
 	public override void OnCellSelected(Cell cell)
 	{

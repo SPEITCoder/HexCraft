@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Collections;
 
 public abstract class ICity : Unit {
 
@@ -12,6 +16,8 @@ public abstract class ICity : Unit {
 	private Transform Highlighter;
 
 	public Unit _unitType;
+
+	public event EventHandler BigCitySelected;
 
 	public override void Initialize()
 	{
@@ -25,8 +31,20 @@ public abstract class ICity : Unit {
 			foreach (Transform cubeTransform in Highlighter)
 				Destroy(cubeTransform.GetComponent<BoxCollider>());
 		}     
-		gameObject.transform.position = Cell.transform.position + new Vector3(0, 0, -1.5f);
+		//gameObject.transform.position = Cell.transform.position + new Vector3(0, 0, -1.5f);
 	}
+		
+	public override void OnUnitSelected()
+	{
+		base.OnUnitSelected ();
+		OnCitySelected();
+	}
+	public virtual void OnCitySelected()
+	{//to Ui only
+		if(BigCitySelected != null)
+			BigCitySelected.Invoke(this, new EventArgs());
+	}
+
 
 	protected override void Defend(Unit other, int damage)
 	{

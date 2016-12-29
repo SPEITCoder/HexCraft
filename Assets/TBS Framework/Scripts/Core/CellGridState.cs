@@ -11,6 +11,9 @@ public abstract class CellGridState
 
     public virtual void OnUnitClicked(Unit unit)
     { }
+
+	public virtual void OnCityClicked(ICity city)
+	{ }
     
     public virtual void OnCellDeselected(Cell cell)
     {

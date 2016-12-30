@@ -54,11 +54,3 @@ public class OnGameUnitGenerator : MonoBehaviour
 		return unit.transform;
 	}
 }
-
-public enum MilitaryBranch
-{
-	Footman,
-	Cavalry,
-	Archer,
-	Catapult
-}

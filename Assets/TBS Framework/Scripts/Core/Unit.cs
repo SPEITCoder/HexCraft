@@ -179,13 +179,15 @@ public abstract class Unit : MonoBehaviour
         MarkAsAttacking(other);
         ActionPoints--;
 		Supply--;
+		int TempAttackFactor;
+		TempAttackFactor = Mathf.FloorToInt (AttackFactor * HitPoints / TotalHitPoints);
 
 		// Supply influence the attack factor
 		// Have to keep supply superieur than 0
 		if (Supply >= 0)
-			other.Defend (this, AttackFactor);
+			other.Defend (this, TempAttackFactor);
 		else
-			other.Defend (this, Mathf.FloorToInt(AttackFactor/2));
+			other.Defend (this, Mathf.FloorToInt(TempAttackFactor/2));
 
         if (ActionPoints == 0)
         {

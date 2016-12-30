@@ -1,4 +1,4 @@
-﻿public class Archer : MyUnit
+﻿public class Archer : UnitAdv
 {
     protected override void Defend(Unit other, int damage)
     {

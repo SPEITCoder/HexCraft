@@ -166,11 +166,11 @@ public abstract class ICity : Unit {
 public class UnitCreateEventArgs : EventArgs
 {
 	public Cell Cell;
-	public Unit Unit;
+	public MilitaryBranch UnitType;
 
-	public UnitCreateEventArgs(Cell cell, Unit unit)
+	public UnitCreateEventArgs(Cell cell, MilitaryBranch unitType)
 	{
 		Cell = cell;
-		Unit = Unit;
+		UnitType = unitType;
 	}
 }

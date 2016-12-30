@@ -1,4 +1,4 @@
-﻿public class Spearman : MyUnit
+﻿public class Spearman : UnitAdv
 {
     protected override void Defend(Unit other, int damage)
     {

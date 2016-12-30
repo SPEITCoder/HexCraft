@@ -1,15 +1,13 @@
 ﻿using UnityEngine.UI;
 
-public class Hero : MyUnit
+public class Hero : UnitAdv
 {
-    private BuffSpawner _buffSpawner;
     private Button _specialAbilityButton;
     private bool _abilityUsed;
 
     public override void Initialize()
     {
         base.Initialize();
-        _buffSpawner = new BuffSpawner();
         _specialAbilityButton = GetComponentInChildren<Button>();
         _specialAbilityButton.gameObject.SetActive(false);
         _specialAbilityButton.onClick.AddListener(TriggerSpecialAbility);
@@ -17,8 +15,6 @@ public class Hero : MyUnit
 
     public override void OnTurnEnd()
     {
-        _buffSpawner.SpawnBuff(new HealingBuff(1, 1), Cell, this, 1, false);
-        _buffSpawner.SpawnBuff(new DefenceBuff(1, 1), Cell, this, 1, false);//Hero has the ability to heal and raise defence od adjacent units.
         base.OnTurnEnd();
     }
     public override void OnUnitSelected()
@@ -45,10 +41,6 @@ public class Hero : MyUnit
         if (!_abilityUsed)
         {
             _abilityUsed = true;
-            var buff = new AttackBuff(3, 2);
-            buff.Apply(this);
-            Buffs.Add(buff);
-
             _specialAbilityButton.gameObject.SetActive(false);
         }  
     }

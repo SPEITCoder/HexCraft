@@ -1,4 +1,4 @@
-﻿public class Paladin : MyUnit
+﻿public class Paladin : UnitAdv
 {
     protected override void Defend(Unit other, int damage)
     {

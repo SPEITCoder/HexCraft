@@ -91,7 +91,7 @@ public class HexGuiController : MonoBehaviour
     }
     private void OnUnitHighlighted(object sender, EventArgs e)
     {
-        var unit = sender as MyUnit;
+		var unit = sender as UnitAdv;
 		StatsText.text = unit.UnitName + "\nHit Points: " + unit.HitPoints +"/"+unit.TotalHitPoints + "\nAttack: " + unit.AttackFactor + "\nDefence: " + unit.DefenceFactor + "\nRange: " + unit.AttackRange + "\nSupply: " + unit.Supply;
         UnitImage.color = unit.PlayerColor;
 

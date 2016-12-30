@@ -48,6 +48,11 @@ public class MyUnit : Unit
     public override void MarkAsDestroyed()
     {
     }
+	public override void OnTurnEnd()
+	{
+		Supply--;
+		base.OnTurnEnd();
+	}
 
     private IEnumerator Jerk(Unit other)
     {

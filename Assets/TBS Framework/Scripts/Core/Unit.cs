@@ -33,8 +33,6 @@ public abstract class Unit : MonoBehaviour
         UnitState.MakeTransition(state);
     }
 
-    public List<Buff> Buffs { get; private set; }
-
     public int TotalHitPoints { get; private set; }
     protected int TotalMovementPoints;
     protected int TotalActionPoints;
@@ -79,8 +77,6 @@ public abstract class Unit : MonoBehaviour
     /// </summary>
     public virtual void Initialize()
     {
-        Buffs = new List<Buff>();
-
         UnitState = new UnitStateNormal(this);
 
         TotalHitPoints = HitPoints;
@@ -118,11 +114,7 @@ public abstract class Unit : MonoBehaviour
     /// Method is called at the end of each turn.
     /// </summary>
     public virtual void OnTurnEnd()
-    {
-        Buffs.FindAll(b => b.Duration == 0).ForEach(b => { b.Undo(this); });
-        Buffs.RemoveAll(b => b.Duration == 0);
-        Buffs.ForEach(b => { b.Duration--; });
-
+	{
         SetState(new UnitStateNormal(this));
     }
     /// <summary>
@@ -178,7 +170,6 @@ public abstract class Unit : MonoBehaviour
 
         MarkAsAttacking(other);
         ActionPoints--;
-		Supply--;
 		int TempAttackFactor;
 		TempAttackFactor = Mathf.FloorToInt (AttackFactor * HitPoints / TotalHitPoints);
 

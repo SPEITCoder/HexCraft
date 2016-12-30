@@ -138,7 +138,7 @@ public class CellGrid : MonoBehaviour
 
 	private void OnUnitCreated(object sender, UnitCreateEventArgs e)
 	{
-
+		gameObject.GetComponent<OnGameUnitGenerator>().SpawnUnit (e.Cell, e.UnitType, CurrentPlayerNumber);
 	}
     private void OnUnitDestroyed(object sender, AttackEventArgs e)
     {

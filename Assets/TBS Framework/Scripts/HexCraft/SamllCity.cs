@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SamllCity : MonoBehaviour {
+public class SamllCity : ICity {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public override void OnCitySelected()
+	{	}
+
+	public override void UnitCreating(Cell cell)
+	{	}
 }

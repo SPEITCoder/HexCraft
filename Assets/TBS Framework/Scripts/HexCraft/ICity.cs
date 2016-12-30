@@ -15,9 +15,10 @@ public abstract class ICity : Unit {
 
 	private Transform Highlighter;
 
-	public Unit _unitType;
+	public MilitaryBranch _unitType;
 
 	public event EventHandler BigCitySelected;
+	public event EventHandler<UnitCreateEventArgs> OnCreatingUnit;
 
 	public override void Initialize()
 	{
@@ -68,9 +69,12 @@ public abstract class ICity : Unit {
 	public override void MarkAsDestroyed()
 	{	}
 
+	//when a cell near city is clicked
 	public virtual void UnitCreating(Cell cell)
 	{
-
+		if(OnCreatingUnit != null)
+			OnCreatingUnit.Invoke(this, new UnitCreateEventArgs(cell, _unitType));
+		//send to UI
 	}
 
 	private IEnumerator Jerk(Unit other)
@@ -156,5 +160,17 @@ public abstract class ICity : Unit {
 			if (rendererComponent != null)
 				rendererComponent.material.color = color;
 		}
+	}
+}
+
+public class UnitCreateEventArgs : EventArgs
+{
+	public Cell Cell;
+	public Unit Unit;
+
+	public UnitCreateEventArgs(Cell cell, Unit unit)
+	{
+		Cell = cell;
+		Unit = Unit;
 	}
 }

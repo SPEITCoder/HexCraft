@@ -121,10 +121,12 @@ public class HexGuiController : MonoBehaviour
 	//when player push FootMan button on UI
 	private void OnCreateFootMan(object sender, EventArgs e)
 	{
+		CityInfo.text = "Change type to footman...";
 		foreach (Transform city in CityParent.transform) 
 		{
 			//city.GetComponent<ICity>()._unitType = ;
-			CityInfo.text = "Change type to footman...";
+			city.GetComponent<ICity>()._unitType = MilitaryBranch.Footman;
+
 		}
 	}
 

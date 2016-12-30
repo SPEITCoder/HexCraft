@@ -73,8 +73,8 @@ public abstract class ICity : Unit {
 	public virtual void UnitCreating(Cell cell)
 	{
 		if(OnCreatingUnit != null)
+			//send to CellGrid
 			OnCreatingUnit.Invoke(this, new UnitCreateEventArgs(cell, _unitType));
-		//send to UI
 	}
 
 	private IEnumerator Jerk(Unit other)

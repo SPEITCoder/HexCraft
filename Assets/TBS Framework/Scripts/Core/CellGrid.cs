@@ -7,7 +7,7 @@ using System;
 /// CellGrid class keeps track of the game, stores cells, units and players objects. It starts the game and makes turn transitions. 
 /// It reacts to user interacting with units or cells, and raises events related to game progress. 
 /// </summary>
-public class CellGrid : MonoBehaviour
+public class CellGrid : CustomUnitGenerator
 {
     public event EventHandler GameStarted;
     public event EventHandler GameEnded;
@@ -95,6 +95,7 @@ public class CellGrid : MonoBehaviour
 		foreach (var city in Citys)
 		{
 			city.UnitClicked += OnCityClicked;
+			city.OnCreatingUnit += OnUnitCreated;
 		}
              
         var unitGenerator = GetComponent<IUnitGenerator>();
@@ -138,7 +139,21 @@ public class CellGrid : MonoBehaviour
 
 	private void OnUnitCreated(object sender, UnitCreateEventArgs e)
 	{
-		gameObject.GetComponent<OnGameUnitGenerator>().SpawnUnit (e.Cell, e.UnitType, CurrentPlayerNumber);
+		Transform unitTransform;
+		unitTransform = gameObject.GetComponent<OnGameUnitGenerator>().SpawnUnit(e.Cell, e.UnitType, CurrentPlayerNumber);
+		Unit unit = unitTransform.gameObject.GetComponent<Unit>();
+		if (unit != null)
+		{
+			Units.Add(unit);
+			unit.Cell = e.Cell;
+			unit.Initialize();
+			unit.OnTurnStart();
+
+			unit.UnitClicked += OnUnitClicked;
+			unit.UnitDestroyed += OnUnitDestroyed;
+		}
+		else
+			Debug.LogError("No Unit script in unit");
 	}
     private void OnUnitDestroyed(object sender, AttackEventArgs e)
     {

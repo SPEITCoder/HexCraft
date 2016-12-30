@@ -133,7 +133,6 @@ GameObject:
   - 33: {fileID: 3336272}
   - 136: {fileID: 13686192}
   - 23: {fileID: 2396670}
-  - 114: {fileID: 11467184}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -763,27 +762,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11467184
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc32db53a01f8ff4d83ea83421371320, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HitPoints: 35
-  AttackRange: 1
-  AttackFactor: 10
-  DefenceFactor: 4
-  MovementPoints: 3
-  MovementSpeed: 7
-  ActionPoints: 1
-  PlayerNumber: 0
-  PlayerColor: {r: 0, g: 0, b: 1, a: 1}
-  UnitName: Hero
 --- !u!136 &13686192
 CapsuleCollider:
   m_ObjectHideFlags: 1

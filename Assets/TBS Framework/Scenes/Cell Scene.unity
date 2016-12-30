@@ -2667,7 +2667,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: -23}
+  m_AnchoredPosition: {x: 271, y: -12}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &187476300
@@ -12843,8 +12843,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: -31}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -33}
+  m_SizeDelta: {x: 98, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &914296423
 MonoBehaviour:
@@ -14610,8 +14610,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 82}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 78}
+  m_SizeDelta: {x: 72, y: 68.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1027930146
 CanvasRenderer:
@@ -15815,8 +15815,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -574, y: 20}
-  m_SizeDelta: {x: -1316, y: -223}
+  m_AnchoredPosition: {x: -303, y: 6}
+  m_SizeDelta: {x: -820, y: -67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1110268751
 MonoBehaviour:
@@ -17386,7 +17386,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 603, y: 24}
+  m_AnchoredPosition: {x: 274, y: 35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1283453772
@@ -20063,6 +20063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738545c63018a9840970e6adf4dfafae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitsParent: {fileID: 263743796}
+  CellsParent: {fileID: 1514237863}
   PlayersParent: {fileID: 43702588}
 --- !u!114 &1514237865
 MonoBehaviour:
@@ -20092,11 +20094,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1514237862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a125d5f077bea1842aaac91bad278579, type: 3}
+  m_Script: {fileID: 11500000, guid: bddc5599773ff5b438b43996ccc206c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UnitsParent: {fileID: 263743796}
   CellsParent: {fileID: 1514237863}
+  FootmanPrefab: {fileID: 1000012957789226, guid: 3d89e01f873cddb4bab79e76a8570f5f,
+    type: 2}
+  CavalryPrefab: {fileID: 1000012957789226, guid: 3d89e01f873cddb4bab79e76a8570f5f,
+    type: 2}
+  ArcherPrefab: {fileID: 1000012957789226, guid: 3d89e01f873cddb4bab79e76a8570f5f,
+    type: 2}
+  CatapultPrefab: {fileID: 1000012957789226, guid: 3d89e01f873cddb4bab79e76a8570f5f,
+    type: 2}
 --- !u!1 &1530447412
 GameObject:
   m_ObjectHideFlags: 0

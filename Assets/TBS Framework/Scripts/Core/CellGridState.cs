@@ -30,7 +30,7 @@ public abstract class CellGridState
     {
         if (_cellGrid.Units.Select(u => u.PlayerNumber).Distinct().ToList().Count == 1)
         {
-            _cellGrid.CellGridState = new CellGridStateGameOver(_cellGrid);
+            //_cellGrid.CellGridState = new CellGridStateGameOver(_cellGrid);
         }
     }
     public virtual void OnStateExit()

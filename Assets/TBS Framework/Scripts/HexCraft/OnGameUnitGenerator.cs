@@ -4,7 +4,7 @@ using System.Linq;
 using System;
 
 
-public class OnGameUnitGenerator : MonoBehaviour 
+public class OnGameUnitGenerator : CustomUnitGenerator 
 {
 	public GameObject FootmanPrefab;
 	public GameObject CavalryPrefab;
@@ -15,6 +15,8 @@ public class OnGameUnitGenerator : MonoBehaviour
 	public Transform SpawnUnit(Cell cell, MilitaryBranch type, int playerNumner)
 	{
 		GameObject unit;
+		if (FootmanPrefab == null)
+			Debug.LogError("No Footman Prefab.");
 		switch (type)
 		{
 		case MilitaryBranch.Footman:
@@ -39,12 +41,12 @@ public class OnGameUnitGenerator : MonoBehaviour
 		{
 			cell.IsTaken = true;
 			unit.GetComponent<Unit>().Cell = cell;
-			unit.transform.position = cell.transform.position;
+			unit.transform.position = cell.gameObject.transform.position;
 			unit.GetComponent<Unit>().PlayerNumber = playerNumner;
-			unit.GetComponent<Unit>().Initialize();
 
 			Vector3 offset = new Vector3(0,0, cell.GetComponent<Cell>().GetCellDimensions().z);
 			unit.transform.position = cell.transform.position - offset;
+			unit.transform.parent = UnitsParent;
 		}//Unit gets snapped to the nearest cell
 		else
 		{

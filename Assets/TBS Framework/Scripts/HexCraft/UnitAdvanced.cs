@@ -30,8 +30,10 @@ public class UnitAdv : Unit
 			Highlighter.position = transform.position + new Vector3(0, 0, 1.5f);
 			foreach (Transform cubeTransform in Highlighter)
 				Destroy(cubeTransform.GetComponent<BoxCollider>());
-		}     
-		gameObject.transform.position = Cell.transform.position + new Vector3(0, 0, -1.5f);
+		}  
+		if (Cell == null)
+			Debug.LogError("No Cell in unit");
+		gameObject.transform.position = Cell.gameObject.transform.position + new Vector3(0, 0, -1.5f);
 	}
 
 	protected override void Defend(Unit other, int damage)

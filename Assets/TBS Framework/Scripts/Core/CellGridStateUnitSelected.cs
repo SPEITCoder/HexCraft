@@ -126,6 +126,18 @@ class CellGridStateUnitSelected : CellGridState
                 _unitsInRange.Add(currentUnit);
             }
         }
+
+		foreach (var currentCity in _cellGrid.Citys)
+		{
+			if (currentCity.PlayerNumber.Equals(_unit.PlayerNumber))
+				continue;
+
+			if (_unit.IsUnitAttackable (currentCity, _unit.Cell))
+			{
+				currentCity.SetState(new UnitStateMarkedAsReachableEnemy(currentCity));
+				_unitsInRange.Add(currentCity);
+			}
+		}
         
         if (_unitCell.GetNeighbours(_cellGrid.Cells).FindAll(c => c.MovementCost <= _unit.MovementPoints).Count == 0 
             && _unitsInRange.Count == 0)

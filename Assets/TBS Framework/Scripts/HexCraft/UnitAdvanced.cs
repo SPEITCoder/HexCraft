@@ -132,7 +132,7 @@ public class UnitAdv : Unit
 	}
 	private void SetColor(Color color)
 	{
-		GetComponent<Renderer>().material.color = color;
+		//GetComponent<Renderer>().material.color = color;
 	}
 	private void SetHighlighterColor(Color color)
 	{

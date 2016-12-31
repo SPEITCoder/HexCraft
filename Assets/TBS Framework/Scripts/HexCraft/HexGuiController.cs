@@ -23,10 +23,12 @@ public class HexGuiController : MonoBehaviour
         //UnitImage.color = Color.gray;
 
         CellGrid.GameStarted += OnGameStarted;
-        CellGrid.TurnEnded += OnTurnEnded;   
+        CellGrid.TurnEnded += OnTurnEnded;
         CellGrid.GameEnded += OnGameEnded;
+		CellGrid.UnitCreated += OnUnitCreated;
 
 		CreateFootmanButton.onClick.AddListener(delegate {OnCreateFootMan(this,new EventArgs());} );
+		NextTurnButton.onClick.AddListener (delegate {CellGrid.EndTurn ();});
     }
 
     private void OnGameStarted(object sender, EventArgs e)
@@ -65,6 +67,15 @@ public class HexGuiController : MonoBehaviour
 
         InfoText.text = "Player " + ((sender as CellGrid).CurrentPlayerNumber +1);
     }
+	private void OnUnitCreated(object sender, EventArgs e)
+	{
+		foreach (Transform unit in UnitsParent.transform)
+		{
+			unit.GetComponent<Unit>().UnitHighlighted += OnUnitHighlighted;
+			unit.GetComponent<Unit>().UnitDehighlighted += OnUnitDehighlighted;
+			unit.GetComponent<Unit>().UnitAttacked += OnUnitAttacked;
+		}
+	}
     private void OnCellDehighlighted(object sender, EventArgs e)
     {
         UnitImage.color = Color.gray;

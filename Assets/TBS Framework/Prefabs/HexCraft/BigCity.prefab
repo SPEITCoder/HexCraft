@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d82985f0dcb37468bb1f6f13525cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoints: 0
+  HitPoints: 100
   AttackRange: 0
   AttackFactor: 0
   DefenceFactor: 0
@@ -385,4 +385,4 @@ MonoBehaviour:
   PlayerNumber: 0
   PlayerColor: {r: 0, g: 0, b: 0, a: 0}
   CityName: 
-  _unitType: {fileID: 0}
+  _unitType: 0

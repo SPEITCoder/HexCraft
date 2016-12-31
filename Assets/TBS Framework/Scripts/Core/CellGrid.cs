@@ -12,6 +12,7 @@ public class CellGrid : CustomUnitGenerator
     public event EventHandler GameStarted;
     public event EventHandler GameEnded;
     public event EventHandler TurnEnded;
+	public event EventHandler UnitCreated;
     
     private CellGridState _cellGridState;//The grid delegates some of its behaviours to cellGridState object.
     public CellGridState CellGridState
@@ -89,13 +90,14 @@ public class CellGrid : CustomUnitGenerator
 
 		var gridGenerator = GetComponent<RectHexGridGenerator>();
 		if (gridGenerator != null)
-			Citys = gridGenerator.GenerateLandform ();
+			Citys = gridGenerator.GenerateLandform();
 		else
 			Debug.LogError("No LandForm Generator");
 		foreach (var city in Citys)
 		{
 			city.UnitClicked += OnCityClicked;
 			city.OnCreatingUnit += OnUnitCreated;
+			city.UnitDestroyed += OnCityOccupied;
 		}
              
         var unitGenerator = GetComponent<IUnitGenerator>();
@@ -137,6 +139,14 @@ public class CellGrid : CustomUnitGenerator
 		CellGridState.OnCityClicked(sender as ICity);
 	}
 
+	private void OnCityOccupied(object sender, AttackEventArgs e)
+	{
+		var city = sender as ICity;
+		city.PlayerNumber = CurrentPlayerNumber;
+		city.HitPoints = city.TotalHitPoints;
+		city.Initialize();
+	}
+
 	private void OnUnitCreated(object sender, UnitCreateEventArgs e)
 	{
 		Transform unitTransform;
@@ -151,6 +161,9 @@ public class CellGrid : CustomUnitGenerator
 
 			unit.UnitClicked += OnUnitClicked;
 			unit.UnitDestroyed += OnUnitDestroyed;
+
+			if (UnitCreated != null)
+				UnitCreated.Invoke(this, new EventArgs ());
 		}
 		else
 			Debug.LogError("No Unit script in unit");

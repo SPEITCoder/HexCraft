@@ -62,8 +62,7 @@ class RectHexGridGenerator : ICellGridGenerator
 
 				smallCity.GetComponent<ICity>().Initialize();
 				smallCity.GetComponent<ICity>().Cell = cell.GetComponent<Cell>();
-					
-				//cell.gameObject.GetComponent<CraftHexagon>().city = smallCity.GetComponent<ICity>();
+				cell.GetComponent<Cell>().IsTaken = true;
 				Citys.Add(smallCity.GetComponent<ICity>());
 			}
 			else if(cell.GetComponent<CraftHexagon>().LandForm == ELandForm.big_city)
@@ -71,12 +70,12 @@ class RectHexGridGenerator : ICellGridGenerator
 				GameObject bigCity = Instantiate(BigCityPrefab);
 				//cell.gameObject.GetComponent<CraftHexagon>().city = bigCity.GetComponent<ICity>();
 				Citys.Add(bigCity.GetComponent<ICity>());
-				bigCity.transform.position = cell.position;
+				bigCity.transform.position = cell.position + new Vector3(0,0,-0.5f);
 				bigCity.transform.parent = CityParent;
 
 				bigCity.GetComponent<ICity>().Initialize();
 				bigCity.GetComponent<ICity>().Cell = cell.GetComponent<Cell>();
-				//cell.gameObject.GetComponent<CraftHexagon>().city = bigCity.GetComponent<ICity>();
+				cell.GetComponent<Cell>().IsTaken = true;
 				Citys.Add(bigCity.GetComponent<ICity>());
 			}
 		}

@@ -18,6 +18,7 @@ public abstract class ICity : Unit {
 	public MilitaryBranch _unitType;
 
 	public event EventHandler BigCitySelected;
+	public event EventHandler CityOccupied;
 	public event EventHandler<UnitCreateEventArgs> OnCreatingUnit;
 
 	public override void Initialize()
@@ -33,6 +34,14 @@ public abstract class ICity : Unit {
 				Destroy(cubeTransform.GetComponent<BoxCollider>());
 		}     
 		//gameObject.transform.position = Cell.transform.position + new Vector3(0, 0, -1.5f);
+	}
+
+	protected override void OnDestroyed()
+	{
+//		if (CityOccupied != null)
+//		{
+//			CityOccupied.Invoke(this, new EventArgs());
+//		}
 	}
 		
 	public override void OnUnitSelected()

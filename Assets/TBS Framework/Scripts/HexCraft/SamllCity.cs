@@ -6,6 +6,6 @@ public class SamllCity : ICity {
 	public override void OnCitySelected()
 	{	}
 
-	public override void UnitCreating(Cell cell)
+	public override void OnUnitCreating(Cell cell)
 	{	}
 }

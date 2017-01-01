@@ -378,7 +378,7 @@ MonoBehaviour:
   AttackRange: 0
   AttackFactor: 0
   DefenceFactor: 0
-  Supply: 0
+  Supply: 5
   MovementPoints: 2
   MovementSpeed: 0
   ActionPoints: 1

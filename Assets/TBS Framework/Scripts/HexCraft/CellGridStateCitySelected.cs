@@ -37,7 +37,7 @@ public class CellGridStateCitySelected : CellGridState {
 		{
 			//var path = _city.FindPath(_cellGrid.Cells, cell);
 			//_unit.Move(cell,path);
-			_city.UnitCreating(cell);
+			_city.OnUnitCreating(cell);
 			_cellGrid.CellGridState = new CellGridStateCitySelected(_cellGrid, _city);
 		}
 	}

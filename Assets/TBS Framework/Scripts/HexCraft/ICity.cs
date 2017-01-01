@@ -19,7 +19,7 @@ public abstract class ICity : Unit {
 
 	public event EventHandler BigCitySelected;
 	public event EventHandler CityOccupied;
-	public event EventHandler<UnitCreateEventArgs> OnCreatingUnit;
+	public event EventHandler<UnitCreateEventArgs> CreatingUnit;
 
 	public override void Initialize()
 	{
@@ -55,6 +55,37 @@ public abstract class ICity : Unit {
 			BigCitySelected.Invoke(this, new EventArgs());
 	}
 
+	public void OnTurnEnd(CellGrid cellGrid)
+	{
+		base.OnTurnEnd();
+		//_city.OnUnitSelected();
+		//_cityCell = _city.Cell;
+
+//		List<Cell> pathsInRange = this.GetAvailableDestinations(cellGrid.Cells);
+		//var cellsNotInRange = cellGrid.Cells.Except(pathsInRange);
+
+		//		foreach (var cell in cellsNotInRange)
+		//		{
+		//			cell.UnMark();
+		//		}
+		//		foreach (var cell in pathsInRange)
+		//		{
+		//			cell.MarkAsReachable();//able to create a unit
+		//		}
+
+		//		if (_city.ActionPoints <= 0) return;
+
+		foreach (var currentUnit in cellGrid.Units)
+		{
+			if (currentUnit.PlayerNumber.Equals(this.PlayerNumber) && this.Cell.GetDistance(currentUnit.Cell) <= this.MovementPoints)
+			{
+				currentUnit.Supply += this.Supply;
+				Debug.Log ("Unit Supply is:" + currentUnit.Supply);
+			}
+		}
+		Debug.Log("City Finish OnturnEnd");
+	}
+
 
 	protected override void Defend(Unit other, int damage)
 	{
@@ -79,11 +110,11 @@ public abstract class ICity : Unit {
 	{	}
 
 	//when a cell near city is clicked
-	public virtual void UnitCreating(Cell cell)
+	public virtual void OnUnitCreating(Cell cell)
 	{
-		if(OnCreatingUnit != null)
+		if(CreatingUnit != null)
 			//send to CellGrid
-			OnCreatingUnit.Invoke(this, new UnitCreateEventArgs(cell, _unitType));
+			CreatingUnit.Invoke(this, new UnitCreateEventArgs(cell, _unitType));
 	}
 
 	private IEnumerator Jerk(Unit other)

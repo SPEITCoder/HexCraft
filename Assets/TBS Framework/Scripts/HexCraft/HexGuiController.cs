@@ -111,7 +111,7 @@ public class HexGuiController : MonoBehaviour
 	private void OnCityClicked(object sender, EventArgs e)
 	{
 		var city = sender as ICity;
-		CityInfo.text = "Clicked a city." + "\nHit Points: " + city.HitPoints + "/" + city.TotalHitPoints;
+		CityInfo.text = "Clicked a city." + "\nHit Points: " + city.HitPoints + "/" + city.TotalHitPoints + "\nSupply: " + city.Supply;
 	}
 	//revive a OnCreatingUnit event from city 
 	private void OnCitySelected(object sender, EventArgs e)

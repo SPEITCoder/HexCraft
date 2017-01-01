@@ -54,6 +54,8 @@ class RectHexGridGenerator : ICellGridGenerator
 
 		foreach (Transform cell in CellsParent)
 		{
+			if (cell.GetComponent<Cell> ().IsTaken)
+				continue;
 			if (cell.GetComponent<CraftHexagon>().LandForm == ELandForm.small_city)
 			{
 				GameObject smallCity = Instantiate(SmallCityPrefab);
@@ -76,7 +78,6 @@ class RectHexGridGenerator : ICellGridGenerator
 				bigCity.GetComponent<ICity>().Initialize();
 				bigCity.GetComponent<ICity>().Cell = cell.GetComponent<Cell>();
 				cell.GetComponent<Cell>().IsTaken = true;
-				Citys.Add(bigCity.GetComponent<ICity>());
 			}
 		}
 

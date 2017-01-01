@@ -80,6 +80,7 @@ public class CellGrid : CustomUnitGenerator
 //					Debug.LogError("Invalid object in citys");
 //			}
         }
+		Debug.Log("Cells Number: " + Cells.Count);
       
         foreach (var cell in Cells)
         {
@@ -93,10 +94,11 @@ public class CellGrid : CustomUnitGenerator
 			Citys = gridGenerator.GenerateLandform();
 		else
 			Debug.LogError("No LandForm Generator");
+		Debug.Log("City Number: " + Citys.Count);
 		foreach (var city in Citys)
 		{
 			city.UnitClicked += OnCityClicked;
-			city.OnCreatingUnit += OnUnitCreated;
+			city.CreatingUnit += OnUnitCreated;
 			city.UnitDestroyed += OnCityOccupied;
 		}
              
@@ -149,6 +151,11 @@ public class CellGrid : CustomUnitGenerator
 
 	private void OnUnitCreated(object sender, UnitCreateEventArgs e)
 	{
+		if (e.Cell.IsTaken)
+		{
+			Debug.Log("Fail to create a unit in a taken cell");
+			return;
+		}
 		Transform unitTransform;
 		unitTransform = gameObject.GetComponent<OnGameUnitGenerator>().SpawnUnit(e.Cell, e.UnitType, CurrentPlayerNumber);
 		Unit unit = unitTransform.gameObject.GetComponent<Unit>();
@@ -156,6 +163,7 @@ public class CellGrid : CustomUnitGenerator
 		{
 			Units.Add(unit);
 			unit.Cell = e.Cell;
+			unit.Cell.IsTaken = true;
 			unit.Initialize();
 			unit.OnTurnStart();
 
@@ -164,6 +172,8 @@ public class CellGrid : CustomUnitGenerator
 
 			if (UnitCreated != null)
 				UnitCreated.Invoke(this, new EventArgs ());
+
+			Debug.Log("Unit Number: " + Units.Count);
 		}
 		else
 			Debug.LogError("No Unit script in unit");
@@ -202,12 +212,15 @@ public class CellGrid : CustomUnitGenerator
         CellGridState = new CellGridStateTurnChanging(this);
 
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnEnd(); });
+		Citys.FindAll(c => c.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(c => { c.OnTurnEnd(this); });
 
         CurrentPlayerNumber = (CurrentPlayerNumber + 1) % NumberOfPlayers;
         while (Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).Count == 0)
         {
             CurrentPlayerNumber = (CurrentPlayerNumber + 1)%NumberOfPlayers;
         }//Skipping players that are defeated.
+
+
 
         if (TurnEnded != null)
             TurnEnded.Invoke(this, new EventArgs());

@@ -241,6 +241,7 @@ GameObject:
   - 23: {fileID: 23000011477623336}
   - 136: {fileID: 136000013782989778}
   - 114: {fileID: 114000014049764048}
+  - 111: {fileID: 111000012549741090}
   m_Layer: 0
   m_Name: Swordman
   m_TagString: Untagged
@@ -1382,14 +1383,28 @@ Animator:
   m_GameObject: {fileID: 1000011252135546}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
+  m_Controller: {fileID: 9100000, guid: 19969f79aa31837459dbfed193573aa2, type: 2}
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!111 &111000012549741090
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011252135546}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0cbd46aa8abdd9b409d3cfd4265bdd3f, type: 3}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 1
 --- !u!114 &114000010294738696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1465,12 +1480,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd795c197f9c7b4e8b0da317df33b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   HitPoints: 30
-  AttackRange: 3
+  AttackRange: 1
   AttackFactor: 10
   DefenceFactor: 10
   Supply: 0
-  MovementPoints: 3
+  MovementPoints: 5
   MovementSpeed: 4
   ActionPoints: 3
   PlayerNumber: 0

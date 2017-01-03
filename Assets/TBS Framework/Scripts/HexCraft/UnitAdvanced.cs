@@ -19,6 +19,8 @@ public class UnitAdv : Unit
 
 	private Transform Highlighter;
 
+	private Animator _animator;
+	
 	public override void Initialize()
 	{
 		base.Initialize();
@@ -66,22 +68,28 @@ public class UnitAdv : Unit
 
 	private IEnumerator Jerk(Unit other)
 	{
-		var heading = other.transform.position - transform.position;
-		var direction = heading / heading.magnitude;
-		float startTime = Time.time;
+		_animator = this.GetComponent<Animator>();
+		_animator.SetBool("attack", true);
 
-		while (startTime + 0.25f > Time.time)
-		{
-			transform.position = Vector3.Lerp(transform.position, transform.position + (direction / 2.5f), ((startTime + 0.25f) - Time.time));
-			yield return 0;
-		}
-		startTime = Time.time;
-		while (startTime + 0.25f > Time.time)
-		{
-			transform.position = Vector3.Lerp(transform.position, transform.position - (direction / 2.5f), ((startTime + 0.25f) - Time.time));
-			yield return 0;
-		}
-		transform.position = Cell.transform.position + new Vector3(0, 0, -1.5f); ;
+		yield return new WaitForSeconds(1.0f);
+	
+//		var heading = other.transform.position - transform.position;
+//		var direction = heading / heading.magnitude;
+//		float startTime = Time.time;
+//
+//		while (startTime + 0.25f > Time.time)
+//		{
+//			transform.position = Vector3.Lerp(transform.position, transform.position + (direction / 2.5f), ((startTime + 0.25f) - Time.time));
+//			yield return 0;
+//		}
+//		startTime = Time.time;
+//		while (startTime + 0.25f > Time.time)
+//		{
+//			transform.position = Vector3.Lerp(transform.position, transform.position - (direction / 2.5f), ((startTime + 0.25f) - Time.time));
+//			yield return 0;
+//		}
+//		transform.position = Cell.transform.position + new Vector3(0, 0, -1.5f);
+		_animator.SetBool("attack", false);
 	}
 	private IEnumerator Glow(Color color, float cooloutTime)
 	{

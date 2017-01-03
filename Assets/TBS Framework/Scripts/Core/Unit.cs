@@ -26,6 +26,7 @@ public abstract class Unit : MonoBehaviour
     public event EventHandler<AttackEventArgs> UnitAttacked;
     public event EventHandler<AttackEventArgs> UnitDestroyed;
     public event EventHandler<MovementEventArgs> UnitMoved;
+	public Animator _animator;
 
     public UnitState UnitState { get; set; }
     public void SetState(UnitState state)
@@ -231,7 +232,9 @@ public abstract class Unit : MonoBehaviour
     protected virtual IEnumerator MovementAnimation(List<Cell> path)
     {
         isMoving = true;
-
+		_animator = this.GetComponent<Animator>();
+		_animator.SetBool("walk", true);
+		yield return new WaitForSeconds(0.2f);
         path.Reverse();
         foreach (var cell in path)
         {
@@ -243,6 +246,7 @@ public abstract class Unit : MonoBehaviour
         }
 
         isMoving = false;
+		_animator.SetBool("walk", false);
     }
 
     ///<summary>

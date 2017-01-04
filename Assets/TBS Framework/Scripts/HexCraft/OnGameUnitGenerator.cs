@@ -55,4 +55,29 @@ public class OnGameUnitGenerator : CustomUnitGenerator
 
 		return unit.transform;
 	}
+
+	public int GetUnitCost(MilitaryBranch type)
+	{
+		if (FootmanPrefab == null)
+			Debug.LogError("No Footman Prefab.");
+		switch (type)
+		{
+		case MilitaryBranch.Footman:
+			return FootmanPrefab.GetComponent<Unit>().UnitCost;
+			break;
+		case MilitaryBranch.Cavalry:
+			return CavalryPrefab.GetComponent<Unit>().UnitCost;
+			break;
+		case MilitaryBranch.Archer:
+			return ArcherPrefab.GetComponent<Unit>().UnitCost;
+			break;
+		case MilitaryBranch.Catapult:
+			return CatapultPrefab.GetComponent<Unit>().UnitCost;
+			break;
+		default:
+			Debug.LogError ("Invalid Miitary Branch");
+			return -1;
+			break;
+		}
+	}
 }

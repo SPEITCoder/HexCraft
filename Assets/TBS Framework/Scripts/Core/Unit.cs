@@ -26,7 +26,7 @@ public abstract class Unit : MonoBehaviour
     public event EventHandler<AttackEventArgs> UnitAttacked;
     public event EventHandler<AttackEventArgs> UnitDestroyed;
     public event EventHandler<MovementEventArgs> UnitMoved;
-	public Animator _animator;
+	protected Animator _animator;
 
     public UnitState UnitState { get; set; }
     public void SetState(UnitState state)
@@ -42,11 +42,14 @@ public abstract class Unit : MonoBehaviour
     /// Cell that the unit is currently occupying.
     /// </summary>
     public Cell Cell { get; set; }
-
     public int HitPoints;
     public int AttackRange;
     public int AttackFactor;
     public int DefenceFactor;
+	/// <summary>
+	/// For Unit, Cost to produce one. For city, money earn each beginning of turn
+	/// </summary>
+	public int UnitCost; 
 	public int Supply;
     /// <summary>
     /// Determines how far on the grid the unit can move.

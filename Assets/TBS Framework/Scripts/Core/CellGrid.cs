@@ -156,6 +156,11 @@ public class CellGrid : CustomUnitGenerator
 			Debug.Log("Fail to create a unit in a taken cell");
 			return;
 		}
+		if (CurrentPlayer.Money < gameObject.GetComponent<OnGameUnitGenerator> ().GetUnitCost (e.UnitType))
+		{
+			Debug.Log("Money not enough!");
+			return;
+		}
 		Transform unitTransform;
 		unitTransform = gameObject.GetComponent<OnGameUnitGenerator>().SpawnUnit(e.Cell, e.UnitType, CurrentPlayerNumber);
 		Unit unit = unitTransform.gameObject.GetComponent<Unit>();
@@ -169,6 +174,8 @@ public class CellGrid : CustomUnitGenerator
 
 			unit.UnitClicked += OnUnitClicked;
 			unit.UnitDestroyed += OnUnitDestroyed;
+
+			CurrentPlayer.Money -= unit.UnitCost;
 
 			if (UnitCreated != null)
 				UnitCreated.Invoke(this, new EventArgs ());
@@ -212,7 +219,10 @@ public class CellGrid : CustomUnitGenerator
         CellGridState = new CellGridStateTurnChanging(this);
 
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnEnd(); });
-		Citys.FindAll(c => c.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(c => { c.OnTurnEnd(this); });
+		Citys.FindAll(c => c.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(c => { 
+			c.OnTurnEnd(this);
+			CurrentPlayer.Money += c.UnitCost;
+		});
 
         CurrentPlayerNumber = (CurrentPlayerNumber + 1) % NumberOfPlayers;
         while (Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).Count == 0)

@@ -374,10 +374,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d82985f0dcb37468bb1f6f13525cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   HitPoints: 100
   AttackRange: 0
   AttackFactor: 0
   DefenceFactor: 0
+  UnitCost: 50
   Supply: 5
   MovementPoints: 2
   MovementSpeed: 0

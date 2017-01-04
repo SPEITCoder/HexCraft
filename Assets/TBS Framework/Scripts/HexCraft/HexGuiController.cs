@@ -65,10 +65,11 @@ public class HexGuiController : MonoBehaviour
     {
         NextTurnButton.interactable = ((sender as CellGrid).CurrentPlayer is HumanPlayer);
 
-        InfoText.text = "Player " + ((sender as CellGrid).CurrentPlayerNumber +1);
+		InfoText.text = "Player " + ((sender as CellGrid).CurrentPlayerNumber +1) + "\nMoney: " + (sender as CellGrid).CurrentPlayer.Money;
     }
 	private void OnUnitCreated(object sender, EventArgs e)
 	{
+		InfoText.text = "Player " + ((sender as CellGrid).CurrentPlayerNumber +1) + "\nMoney: " + (sender as CellGrid).CurrentPlayer.Money;
 		foreach (Transform unit in UnitsParent.transform)
 		{
 			unit.GetComponent<Unit>().UnitHighlighted += OnUnitHighlighted;

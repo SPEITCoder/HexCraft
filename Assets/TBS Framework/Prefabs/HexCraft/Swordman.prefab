@@ -1485,6 +1485,7 @@ MonoBehaviour:
   AttackRange: 1
   AttackFactor: 10
   DefenceFactor: 10
+  UnitCost: 30
   Supply: 0
   MovementPoints: 5
   MovementSpeed: 4

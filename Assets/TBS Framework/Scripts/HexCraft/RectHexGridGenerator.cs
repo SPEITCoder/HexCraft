@@ -65,6 +65,7 @@ class RectHexGridGenerator : ICellGridGenerator
 
 				smallCity.GetComponent<ICity>().Initialize();
 				smallCity.GetComponent<ICity>().Cell = cell.GetComponent<Cell>();
+				smallCity.GetComponent<ICity> ().PlayerNumber = cell.GetComponent<CraftHexagon> ().CityPlayernumberInit;
 				cell.GetComponent<Cell>().IsTaken = true;
 
 			}
@@ -78,6 +79,7 @@ class RectHexGridGenerator : ICellGridGenerator
 
 				bigCity.GetComponent<ICity>().Initialize();
 				bigCity.GetComponent<ICity>().Cell = cell.GetComponent<Cell>();
+				bigCity.GetComponent<ICity> ().PlayerNumber = cell.GetComponent<CraftHexagon> ().CityPlayernumberInit;
 				cell.GetComponent<Cell>().IsTaken = true;
 			}
 		}

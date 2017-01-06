@@ -1060,3 +1060,5 @@ MonoBehaviour:
   IsTaken: 0
   MovementCost: 0
   HexGridType: 0
+  LandForm: 0
+  CityPlayernumberInit: -1

@@ -15,6 +15,9 @@ public class HexGuiController : MonoBehaviour
 	public Text CityInfo;
 
 	public Button CreateFootmanButton;
+	public Button CreateCavalryButton;
+	public Button CreateArcherButton;
+	public Button CreateCatapultButton;
 
 	private Cell _selectedCell;
 
@@ -28,6 +31,10 @@ public class HexGuiController : MonoBehaviour
 		CellGrid.UnitCreated += OnUnitCreated;
 
 		CreateFootmanButton.onClick.AddListener(delegate {OnCreateFootMan(this,new EventArgs());} );
+		CreateCavalryButton.onClick.AddListener(delegate {OnCreateCavalry(this,new EventArgs());} );
+		CreateArcherButton.onClick.AddListener(delegate {OnCreateArcher(this,new EventArgs());} );
+		CreateCatapultButton.onClick.AddListener(delegate {OnCreateCatapult(this,new EventArgs());} );
+
 		NextTurnButton.onClick.AddListener (delegate {CellGrid.EndTurn ();});
     }
 
@@ -124,20 +131,59 @@ public class HexGuiController : MonoBehaviour
 	private void OnBigCitySelected(object sender, EventArgs e)
 	{
 		CreateFootmanButton.interactable = true;
+		CreateCavalryButton.interactable = true;
+		CreateArcherButton.interactable = true;
+		CreateCatapultButton.interactable = true;
 	}
 	private void OnCityDeselected(object sender, EventArgs e)
 	{
 		CreateFootmanButton.interactable = false;
+		CreateCavalryButton.interactable = false;
+		CreateArcherButton.interactable = false;
+		CreateCatapultButton.interactable = false;
 	}
 
 	//when player push FootMan button on UI
 	private void OnCreateFootMan(object sender, EventArgs e)
 	{
-		CityInfo.text = "Change type to footman...";
+		//CityInfo.text = "Change type to footman...";
 		foreach (Transform city in CityParent.transform) 
 		{
 			//city.GetComponent<ICity>()._unitType = ;
 			city.GetComponent<ICity>()._unitType = MilitaryBranch.Footman;
+
+		}
+	}
+
+	private void OnCreateCavalry(object sender, EventArgs e)
+	{
+		//CityInfo.text = "Change type to footman...";
+		foreach (Transform city in CityParent.transform) 
+		{
+			//city.GetComponent<ICity>()._unitType = ;
+			city.GetComponent<ICity>()._unitType = MilitaryBranch.Cavalry;
+
+		}
+	}
+
+	private void OnCreateArcher(object sender, EventArgs e)
+	{
+		//CityInfo.text = "Change type to footman...";
+		foreach (Transform city in CityParent.transform) 
+		{
+			//city.GetComponent<ICity>()._unitType = ;
+			city.GetComponent<ICity>()._unitType = MilitaryBranch.Archer;
+
+		}
+	}
+
+	private void OnCreateCatapult(object sender, EventArgs e)
+	{
+		//CityInfo.text = "Change type to footman...";
+		foreach (Transform city in CityParent.transform) 
+		{
+			//city.GetComponent<ICity>()._unitType = ;
+			city.GetComponent<ICity>()._unitType = MilitaryBranch.Catapult;
 
 		}
 	}

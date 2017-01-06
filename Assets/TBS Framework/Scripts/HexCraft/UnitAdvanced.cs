@@ -27,7 +27,7 @@ public class UnitAdv : Unit
 		Highlighter = transform.Find("Highlighter");
 		if (Highlighter != null)
 		{
-			Highlighter.position = transform.position + new Vector3(0, 0, -0.5f);
+			Highlighter.position = transform.position + new Vector3(0, 0, 0.48f);
 			// Debug.Log("Find Highlighter");
 			foreach (Transform cubeTransform in Highlighter)
 				Destroy(cubeTransform.GetComponent<BoxCollider>());

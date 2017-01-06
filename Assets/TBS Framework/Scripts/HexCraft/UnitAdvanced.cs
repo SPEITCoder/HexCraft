@@ -67,6 +67,9 @@ public class UnitAdv : Unit
 
 	private IEnumerator Jerk(Unit other)
 	{
+		gameObject.transform.rotation = Quaternion.LookRotation(other.transform.position - gameObject.transform.position,-Vector3.forward);
+		yield return new WaitForSeconds(0.3f);
+
 		_animator = this.GetComponent<Animator>();
 		_animator.SetBool("attack", true);
 

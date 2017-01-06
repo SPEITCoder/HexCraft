@@ -236,13 +236,23 @@ public abstract class Unit : MonoBehaviour
     {
         isMoving = true;
 		_animator = this.GetComponent<Animator>();
+//		Vector3 tempVector;
+//		tempVector = Cell.transform.position - gameObject.transform.position;
+//		tempVector.z = 0;
+//		gameObject.transform.rotation = Quaternion.LookRotation(tempVector,-Vector3.forward);
 		_animator.SetBool("walk", true);
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.3f);
+
         path.Reverse();
         foreach (var cell in path)
-        {
+		{
             while (new Vector2(transform.position.x,transform.position.y) != new Vector2(cell.transform.position.x,cell.transform.position.y))
             {
+				Vector3 tempVector;
+				tempVector = cell.transform.position - gameObject.transform.position;
+				tempVector.z = 0;
+				gameObject.transform.rotation = Quaternion.LookRotation(tempVector,-Vector3.forward);
+				
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(cell.transform.position.x,cell.transform.position.y,transform.position.z), Time.deltaTime * MovementSpeed);
                 yield return 0;
             }

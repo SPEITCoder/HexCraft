@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(RectHexGridGenerator), true)]
+
 public class RectHexGridGeneratorHelper : Editor {
 	public override void OnInspectorGUI()
 	{
@@ -29,3 +30,4 @@ public class RectHexGridGeneratorHelper : Editor {
 		}
 	}
 }
+#endif

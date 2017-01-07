@@ -28,9 +28,13 @@ public abstract class CellGridState
 
     public virtual void OnStateEnter()
     {
-        if (_cellGrid.Units.Select(u => u.PlayerNumber).Distinct().ToList().Count == 1)
-        {
-            //_cellGrid.CellGridState = new CellGridStateGameOver(_cellGrid);
+		if (_cellGrid.Units.Select (u => u.PlayerNumber).Distinct ().Count () == 1 &&
+			
+			((_cellGrid.Citys.Select (c => c.PlayerNumber).Distinct ().Count () == 1) ||
+		  (_cellGrid.Citys.Select (c => c.PlayerNumber).Distinct ().Count () == 2 && 
+					_cellGrid.Citys.FindAll(c => c.PlayerNumber.Equals(-1)).Count > 0))) {
+
+            _cellGrid.CellGridState = new CellGridStateGameOver(_cellGrid);
         }
     }
     public virtual void OnStateExit()

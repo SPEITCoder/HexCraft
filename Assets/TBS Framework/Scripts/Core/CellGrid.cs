@@ -213,10 +213,14 @@ public class CellGrid : CustomUnitGenerator
     /// </summary>
     public void EndTurn()
     {
-        if (Units.Select(u => u.PlayerNumber).Distinct().Count() == 1)
-        {
-            return;
-        }
+		if (Units.Select (u => u.PlayerNumber).Distinct ().Count () == 1 &&
+		    
+			(Citys.Select (c => c.PlayerNumber).Distinct ().Count () == 1 ||
+			(Citys.Select (c => c.PlayerNumber).Distinct ().Count () == 2 && 
+				Citys.FindAll(c => c.PlayerNumber.Equals(-1)).Count > 0)) ) {
+					return;
+
+		}
         CellGridState = new CellGridStateTurnChanging(this);
 
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnEnd(); });
@@ -226,7 +230,8 @@ public class CellGrid : CustomUnitGenerator
 		});
 
         CurrentPlayerNumber = (CurrentPlayerNumber + 1) % NumberOfPlayers;
-        while (Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).Count == 0)
+        while (Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).Count == 0 && 
+				Citys.FindAll(c => c.PlayerNumber.Equals(CurrentPlayerNumber)).Count == 0)
         {
             CurrentPlayerNumber = (CurrentPlayerNumber + 1)%NumberOfPlayers;
         }//Skipping players that are defeated.

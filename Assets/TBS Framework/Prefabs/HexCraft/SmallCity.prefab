@@ -652,7 +652,7 @@ MonoBehaviour:
   AttackFactor: 0
   DefenceFactor: 0
   UnitCost: 10
-  Supply: 0
+  Supply: 5
   MovementPoints: 1
   MovementSpeed: 0
   ActionPoints: 1

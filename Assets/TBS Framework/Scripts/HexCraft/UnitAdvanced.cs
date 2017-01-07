@@ -62,7 +62,7 @@ public class UnitAdv : Unit
 	public override void OnTurnEnd()
 	{
 		Supply--;
-		base.OnTurnEnd();
+		base.OnTurnEnd ();
 	}
 
 	private IEnumerator Jerk(Unit other)

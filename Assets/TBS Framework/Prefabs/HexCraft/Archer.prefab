@@ -478,8 +478,7 @@ GameObject:
   - 95: {fileID: 95000011588489962}
   - 23: {fileID: 23000013452001710}
   - 136: {fileID: 136000014039155212}
-  - 114: {fileID: 114000011126222514}
-  - 111: {fileID: 111000013221392124}
+  - 114: {fileID: 114000010025185896}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -1412,7 +1411,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013534612438}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 4909bd38dc5fb7348985b8f008c7fa0b, type: 3}
   m_Controller: {fileID: 9100000, guid: cb19461edac68fe4f89cda607c1440a1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -1438,21 +1437,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!111 &111000013221392124
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013534612438}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 0cbd46aa8abdd9b409d3cfd4265bdd3f, type: 3}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
---- !u!114 &114000011126222514
+--- !u!114 &114000010025185896
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1460,7 +1445,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013534612438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd795c197f9c7b4e8b0da317df33b64, type: 3}
+  m_Script: {fileID: 11500000, guid: 59eae8df5168e7d4aa7a59fc4c205e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 30

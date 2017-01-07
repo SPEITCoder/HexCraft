@@ -69,7 +69,6 @@ GameObject:
   - 23: {fileID: 23000012993172610}
   - 136: {fileID: 136000010141574504}
   - 114: {fileID: 114000013414508424}
-  - 111: {fileID: 111000010687663808}
   m_Layer: 0
   m_Name: HeavyInfantry
   m_TagString: Untagged
@@ -1438,20 +1437,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!111 &111000010687663808
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010541126344}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 0cbd46aa8abdd9b409d3cfd4265bdd3f, type: 3}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
 --- !u!114 &114000011764777646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1529,7 +1514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitPoints: 30
   AttackRange: 1
-  AttackFactor: 15
+  AttackFactor: 12
   DefenceFactor: 5
   UnitCost: 50
   Supply: 0

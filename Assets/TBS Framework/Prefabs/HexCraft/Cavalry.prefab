@@ -334,8 +334,7 @@ GameObject:
   - 95: {fileID: 95000014170539066}
   - 23: {fileID: 23000010524637180}
   - 136: {fileID: 136000014193745688}
-  - 114: {fileID: 114000012299537236}
-  - 111: {fileID: 111000010683291694}
+  - 114: {fileID: 114000012861129570}
   m_Layer: 0
   m_Name: Cavalry
   m_TagString: Untagged
@@ -2392,7 +2391,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011099336554}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 57ef2b3dfb2f203458b170ea5543c342, type: 3}
   m_Controller: {fileID: 9100000, guid: 0d266fb611960114db18c3149b6e8a85, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -2418,20 +2417,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!111 &111000010683291694
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011099336554}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 0cbd46aa8abdd9b409d3cfd4265bdd3f, type: 3}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
 --- !u!114 &114000010273145952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2453,29 +2438,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114000012299537236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011099336554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd795c197f9c7b4e8b0da317df33b64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HitPoints: 30
-  AttackRange: 1
-  AttackFactor: 20
-  DefenceFactor: 4
-  UnitCost: 80
-  Supply: 0
-  MovementPoints: 4
-  MovementSpeed: 6
-  ActionPoints: 1
-  PlayerNumber: 0
-  PlayerColor: {r: 0, g: 0, b: 0, a: 0}
-  UnitName: 
 --- !u!114 &114000012651637528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2492,6 +2454,29 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114000012861129570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011099336554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c3b83c084085945bd5889f1b550649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitPoints: 30
+  AttackRange: 1
+  AttackFactor: 16
+  DefenceFactor: 4
+  UnitCost: 80
+  Supply: 0
+  MovementPoints: 4
+  MovementSpeed: 6
+  ActionPoints: 1
+  PlayerNumber: 0
+  PlayerColor: {r: 0, g: 0, b: 0, a: 0}
+  UnitName: 
 --- !u!114 &114000013446177604
 MonoBehaviour:
   m_ObjectHideFlags: 1

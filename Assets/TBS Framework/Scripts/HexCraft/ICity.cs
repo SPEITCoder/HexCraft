@@ -29,7 +29,7 @@ public abstract class ICity : Unit {
 		Highlighter = transform.Find("Highlighter");
 		if (Highlighter != null)
 		{
-			Highlighter.position = transform.position + new Vector3(0, 0, 1.5f);
+			Highlighter.position = transform.position + new Vector3(0, 0, 0.5f);
 			foreach (Transform cubeTransform in Highlighter)
 				Destroy(cubeTransform.GetComponent<BoxCollider>());
 		}     
@@ -172,7 +172,7 @@ public abstract class ICity : Unit {
 		SetColor(PlayerColor);
 		SetHighlighterColor(Color.white);
 		if (Highlighter == null) return;
-		Highlighter.position = transform.position + new Vector3(0, 0, 1.52f);
+		Highlighter.position = transform.position + new Vector3(0, 0, 0.52f);
 	}
 
 	private void UpdateHpBar()
@@ -193,7 +193,7 @@ public abstract class ICity : Unit {
 
 		if (Highlighter == null) return;
 
-		Highlighter.position = transform.position + new Vector3(0, 0, 1.48f);
+		Highlighter.position = transform.position + new Vector3(0, 0, 0.48f);
 		for (int i = 0; i < Highlighter.childCount; i++)
 		{
 			var rendererComponent = Highlighter.transform.GetChild(i).GetComponent<Renderer>();

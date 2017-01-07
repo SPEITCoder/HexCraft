@@ -205,6 +205,7 @@ public class CellGrid : CustomUnitGenerator
             GameStarted.Invoke(this, new EventArgs());
 
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnStart(); });
+		Citys.FindAll(c => c.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(c => { c.OnTurnStart(); });
         Players.Find(p => p.PlayerNumber.Equals(CurrentPlayerNumber)).Play(this);
     }
     /// <summary>
@@ -236,6 +237,7 @@ public class CellGrid : CustomUnitGenerator
             TurnEnded.Invoke(this, new EventArgs());
 
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnStart(); });
+		Citys.FindAll(c => c.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(c => { c.OnTurnStart(); });
         Players.Find(p => p.PlayerNumber.Equals(CurrentPlayerNumber)).Play(this);     
     }
 }

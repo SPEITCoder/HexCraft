@@ -120,8 +120,8 @@ public class UnitAdv : Unit
 	}
 	public override void MarkAsFinished()
 	{
-		SetColor(PlayerColor - Color.gray);
-		SetHighlighterColor(new Color(0.8f, 1, 0.8f));
+		//SetColor(PlayerColor - Color.gray);
+		SetHighlighterColor(Color.gray);
 	}
 	public override void UnMark()
 	{

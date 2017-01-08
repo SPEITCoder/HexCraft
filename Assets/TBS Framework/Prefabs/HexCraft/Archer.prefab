@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59eae8df5168e7d4aa7a59fc4c205e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoints: 30
+  HitPoints: 20
   AttackRange: 2
   AttackFactor: 15
   DefenceFactor: 3

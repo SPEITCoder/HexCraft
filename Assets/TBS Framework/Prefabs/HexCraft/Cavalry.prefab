@@ -2467,7 +2467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitPoints: 30
   AttackRange: 1
-  AttackFactor: 16
+  AttackFactor: 18
   DefenceFactor: 4
   UnitCost: 80
   Supply: 0

@@ -1059,10 +1059,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c58ebc7726631f44a9060774c92cd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoints: 50
+  HitPoints: 40
   AttackRange: 3
   AttackFactor: 20
-  DefenceFactor: 5
+  DefenceFactor: 3
   UnitCost: 120
   Supply: 0
   MovementPoints: 2

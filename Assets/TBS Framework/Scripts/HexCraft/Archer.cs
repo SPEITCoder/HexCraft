@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class Archer : UnitAdv
 {
+    public override bool IsUnitAttackable(Unit other, Cell sourceCell)
+    {
+        if (sourceCell.GetDistance(other.Cell) <= AttackRange && sourceCell.GetDistance(other.Cell) > 1)
+            return true;
+
+        return false;
+    }
+
     public override void Initialize()
     {
         base.Initialize();
